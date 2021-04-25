@@ -5,8 +5,6 @@ import java.util.Random;
 /**
  *
  * @author Ummu Hanisah
- * @title Intermediate Java Tutorial - 26 - Learning about Threads @thenewboston
- * @source https://www.youtube.com/watch?v=VYN-CBtPNiM
  */
 
 
@@ -21,16 +19,16 @@ public class Tuna implements Runnable {
         name = x;
         
         // put thread to sleep is make it do nothing, just chillax and wait something to happen
-        time = r.nextInt(999); // between 0 t0 1 sec
+        time = r.nextInt(999); // between 0 t0 999ms ~ 1 sec
     }
     
     @Override
-    public void run() {
+    public void run() { // this run method will get call whenever you start the thread
         try {
             System.out.printf("%s us sleeping for %d\n", name, time);
-            Thread.sleep(time);
-            System.out.printf("%s is done\n", name);
-        } catch (Exception ex) {
+            Thread.sleep(time); // we are going to put how long we are going to sleep
+            System.out.printf("%s is done\n", name); // when we wake up, we going to print this
+        } catch (InterruptedException ex) {
             System.out.println(ex);
         }
     }
